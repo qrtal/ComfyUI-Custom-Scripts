@@ -576,7 +576,7 @@ export class TextAreaAutoComplete {
 					onclick: () => {
 						this.el.focus();
 						let value = wordInfo.value ?? wordInfo.text;
-						if (TextAreaAutoComplete.replacer) {
+						if (TextAreaAutoComplete.replacer && !/^(embedding|<lora):/.test(value)) {
 							value = TextAreaAutoComplete.replacer(value);
 						}
 						this.helper.insertAtCursor(value + this.separator, -before.length, wordInfo.caretOffset);
